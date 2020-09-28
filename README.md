@@ -19,6 +19,8 @@ docker run -it common-words bash
 python3 app.py 3
 ```
 
+A suite of unit tests will be run as part of the build process. The build will fail if coverage falls below 85%.
+
 The user can specify the number of 'interesting' terms to return per document as a command line argument (3 shown as
  an example above). If left blank, this will default to 5 per document.
 
