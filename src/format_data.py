@@ -24,7 +24,7 @@ class FormatData:
         :return: DataFrame: Columns show the filename and the raw text contained in the document; one row per doc.
         """
 
-        files = os.listdir(self.data_path)
+        files = sorted(os.listdir(self.data_path))
         txt_files = [f for f in files if f[4:] == ".txt"]
 
         f_col = "filename"

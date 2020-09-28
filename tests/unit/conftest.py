@@ -46,4 +46,4 @@ def save_folder():
 
 @pytest.fixture(scope="session")
 def save_file():
-    return "common-words.csv"
+    return "common-words.csv¬"

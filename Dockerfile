@@ -1,11 +1,12 @@
-FROM python:3.7-alpine
+FROM python:3.7-slim
 
+# Copy and install requirements first to take advantage of caching.
+COPY requirements.txt /common-words/app/
+RUN pip install -r /common-words/app/requirements.txt
+
+# Copy rest of files; set workdir
 COPY . /common-words/app
 WORKDIR /common-words/app
-RUN pip install -r requirements.txt
 
-# Run unit tests with coverage
+# Run unit tests with coverage. Build fails if coverage floor not met.
 RUN python3 -m pytest --cov ./src/ --cov-fail-under=85
-
-
-# Run processing
