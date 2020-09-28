@@ -1,16 +1,18 @@
 # common-words
-Extracts the most common 'interesting' words from a series of .txt files and summarises results
 
-The statistical techinique used is Term Frequency Inverse Document Frequency (TFIDF), which provides a
-metric ............
+This python module extracts the most common 'interesting' words from a series of .txt files and summarises results.
+
+The statistical techinique used to get the most 'interesting' words is Term Frequency Inverse Document Frequency (TFIDF
+), which provides a metric ............
 
 This module has been containerised and can be run with the following steps:
 
 ```
 docker build -t common-words .
-
+docker run
 ```
 
+The results will be saved as a `.csv` file in the folder `~/common-words/app/results/`.
 
 
 ### Future Work
@@ -27,3 +29,4 @@ powerful models / techniques such as using spaCy language models or Latent Diric
 especially when copying and manipulating dataframes;
 * Model Saving: we may wish to save the model after training so it can be exported. I suggest ONNX as
 a file format as it can be deployed into multiple runtimes.
+* Logging:
