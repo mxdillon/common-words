@@ -10,8 +10,7 @@ For more information and the mathematical derivation please see this
 [page](https://en.wikipedia.org/wiki/Tf%E2%80%93idf).
 
 ---------------
-
-#### Running the module
+### Running the module
 This module has been containerised and can be run anywhere with the following steps:
 
 ```
@@ -20,14 +19,14 @@ docker run -it common-words bash
 python3 app.py 3
 ```
 
-The user can specify the number of 'interesting' terms to return per document as a command line argument. If left
- blank, this will default to 5 per document.
+The user can specify the number of 'interesting' terms to return per document as a command line argument (3 shown as
+ an example above). If left blank, this will default to 5 per document.
 
 The results will be saved as a `.csv` file in the folder `~/common-words/app/results/`.
 
 --------------------
 
-## Future Work
+### Future Work
 There are a number of extensions to consider if expanding this out to a larger corpus or production environment:
 * Serving: if this were being deployed for reuse I would consider wrapping it up as a RESTful API so that
 it could be accessed by the client regardless of where it was being hosted.
