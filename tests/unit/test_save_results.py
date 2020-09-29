@@ -1,11 +1,12 @@
 #!/usr/bin/python
 # coding=utf-8
-"""Test .
+"""Test file saved to specified location. Clean up after tests run.
 :usage:
     To be run with every commit
 :authors
     MD at 28/09/20
 """
+
 import os
 import shutil
 from src.save_results import SaveResults

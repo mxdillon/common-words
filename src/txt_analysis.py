@@ -2,7 +2,7 @@
 # coding=utf-8
 """Run analysis over corpus.
 :usage:
-
+    Perform TFIDF analysis over the corpus and format the results table.
 :authors
     MD at 25/09/20
 """
@@ -14,7 +14,7 @@ from typing import Tuple
 
 
 class MostImportant:
-    """For a given corpus, performs Term Frequancy Inverse Document Frequency and return a DataFrame summarising the
+    """For a given corpus, performs Term Frequency Inverse Document Frequency and returns a DataFrame summarising the
     results."""
 
     def __init__(self, raw_data: pd.DataFrame, raw_col_name: str):
@@ -39,7 +39,7 @@ class MostImportant:
         self.vocab = self.tfidf_vect.get_feature_names()
 
     def _count_vectorizer(self) -> None:
-        """Fits count vectorizer (used in final summary DataFrame)."""
+        """Fits count vectorizer to corpus (used in final summary DataFrame)."""
         self.count_vect = CountVectorizer(stop_words="english")
         self.count_matrix = self.count_vect.fit_transform(self.corpus).toarray()
 
@@ -53,7 +53,7 @@ class MostImportant:
             self.sorted_scores[i, :] = np.flip(sorted_scores_asc)
 
     def _collect_results(self, doc: int, term: int) -> Tuple[str, float, int, int]:
-        """Retrieves the word, tfidf score, occurences of the word in the document and occurences of the word in the
+        """Retrieves the word, tfidf score, occurrences of the word in the document and occurrences of the word in the
         entire corpus from the data previously calculated.
 
         :param doc: int representing the document number to index on.

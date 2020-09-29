@@ -2,7 +2,7 @@
 # coding=utf-8
 """Format data in preparation for analysis.
 :usage:
-    To be run with every commit
+    Currently only compatible with .txt files.
 :authors
     MD at 25/09/20
 """

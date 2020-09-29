@@ -39,7 +39,7 @@ def test_count_vect_output_shape(analysis_class):
                          ids=["hamcol", "cheesecol"])
 def test_count_vect_tfidf_same_order(arr, idx, word, analysis_class):
     """Check the order of the columns is the same in both count_vector and tfidf matrices.
-    This is verified by using the word idx from the tfidf vocab object and the count_matrix from  count_vect."""
+    This is verified by using the word idx from the tfidf vocab object and the count_matrix from count_vect."""
     np.testing.assert_array_equal(analysis_class.count_matrix[:, idx], arr)
     assert analysis_class.vocab[idx] == word
 
@@ -63,10 +63,8 @@ def test_collect_results(d, i, w, s, c, c_all, analysis_class):
 @pytest.mark.parametrize("data,idx",
                          [(({"filename": "doc1.txt", "word": "testfile", "tfidf_score": 0.7071067811865475,
                              "count_doc": 1, "count_corpus": 1}), 0),
-                          (
-                              ({"filename": "doc5.txt", "word": "cheese", "tfidf_score": 0.4015651234424611,
-                                "count_doc": 1,
-                                "count_corpus": 4}), 14)],
+                          (({"filename": "doc5.txt", "word": "cheese", "tfidf_score": 0.4015651234424611,
+                             "count_doc": 1, "count_corpus": 4}), 14)],
                          ids=["fisrtrow", "lastrow"])
 def test_summary_df_top(data, idx, df_analysis):
     """Check top and bottom rows of df_out are equal to expected. It must be of the format filename; word; tfidf score.

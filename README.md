@@ -21,27 +21,38 @@ python3 app.py 3
 
 A set of unit tests will be run as part of the build process. The build will fail if coverage falls below 85%.
 
+The module will return a DataFrame of the following format:
+
+| filename | word | tfidf score | count_doc | count_corpus |
+| :---: | :---: |:---: | :---: | :---: |
+| _name of the file_ | | | _# of occurrences of the word in specific file_ | _# of occurrences of the word in entire corpus_ |
+
 The user can specify the number of 'interesting' terms to return per document as a command line argument (3 shown as
  an example above). If left blank, this will default to 5 per document.
 
 The results will be saved as a `.csv` file in the folder `~/common-words/app/results/`.
 
+To copy the results out of the container onto host:
+```
+docker cp <containerID>:/common-words/app/results/common-words.csv .
+```
+
 --------------------
 
 ### Future Work
 There are a number of extensions to consider if expanding this out to a larger corpus or production environment:
-* Serving: if this were being deployed for reuse I would consider wrapping it up as a RESTful API so that
-it could be accessed by the client regardless of where it was being hosted.
-* Data Storage: the dataset provided is very small and doesn't contain any sensitive information, so
+* **Serving**: if this were being deployed for reuse I would consider wrapping it up as a RESTful API so that
+it could be accessed by the client regardless of where it was being hosted;
+* **Data Storage**: the dataset provided is very small and doesn't contain any sensitive information, so
 I have stored it in the source code. This is unlikely to be appropriate with production data. For speed and
 security improvements I would look at using a persistent storage volume to store the raw data and a
 separate volume for the outputs;
-* Analysis: to keep this lightweight, I have used scikit-learn for the analysis. We might want to consider more
+* **Analysis**: to keep this lightweight, I have used scikit-learn for the analysis. We might want to consider more
 powerful models / techniques such as using spaCy language models or Latent Dirichlet Allocation;
-* Memory Management: If this was a large dataset, memory management would become increasingly important -
+* **Memory Management**: If this was a large dataset, memory management would become increasingly important -
 especially when copying and manipulating dataframes;
-* Model Saving: we may wish to save the model after training so it can be exported. I suggest ONNX as
-a file format as it can be deployed into multiple runtimes.
-* Logging: If this were to be deployed more detailed logging would be required throughout the module, including extra
- information that would help in debugging, such as the internal IP address of the server running the module (if
-  deploying onto a network).
+* **Model Saving**: we may wish to save the model after training so it can be exported. I suggest ONNX as
+a file format as it can be deployed into multiple runtimes;
+* **Logging**: If this were to be deployed more detailed logging would be required throughout the module. For example:
+ extra information that would help in debugging such as the internal IP address of the server running the module (if
+  deploying onto a network);

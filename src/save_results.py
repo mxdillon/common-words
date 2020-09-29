@@ -19,10 +19,10 @@ class SaveResults:
         None:
         """Saves DataFrame at the specified location.
 
-        :param df_out: DataFrame to save
+        :param df_out: DataFrame to save.
         :param save_folder: folder name. If doesn't exist it will be created.
         :param save_filename: file name. Must include .csv suffix.
-        :return: None
+        :return: None.
         """
         if not os.path.exists(save_folder):
             os.mkdir(save_folder)
